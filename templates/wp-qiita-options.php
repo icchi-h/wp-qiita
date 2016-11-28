@@ -9,11 +9,11 @@ if ( $this->check_current_activated( $this->current_user ) ) {
 }
 
 $tmpl_tabs = array(
-  'activation' => __('Activation', $this->domain_name), 
-  'profile' => __('Profile', $this->domain_name), 
-  'items' => __('Items', $this->domain_name), 
-  'comments' => __('Comments', $this->domain_name), 
-  'extra' => __('Extra', $this->domain_name), 
+  'activation' => __('Activation', $this->domain_name),
+  'profile' => __('Profile', $this->domain_name),
+  'items' => __('Items', $this->domain_name),
+  'comments' => __('Comments', $this->domain_name),
+  'extra' => __('Extra', $this->domain_name),
 );
 if ( $_is_activated ) {
   unset( $tmpl_tabs['comments'] ); // Features not yet valid
@@ -31,35 +31,35 @@ $wpqt_nonce_action = implode( '/', array( site_url(), $this->domain_name, $this-
     <h2 id="screen-title"><span class="wpqt-qiita-favicon-color"><span class="path1"></span><span class="path2"></span></span> <?php _e('WP Qiita General Options', $this->domain_name); ?></h2>
     <span class="plugin-version label label-info"><?php echo __('Ver.', $this->domain_name); ?> <?php echo $this->version; ?></span>
   </header><!-- /.plugin-options-header -->
-  
+
   <form method="post" action="<?php echo add_query_arg('tab', $tmpl_current_tab); ?>" id="wp-qiita-admin-form">
     <input type="hidden" name="active_tab" value="<?php echo $tmpl_current_tab; ?>">
     <input type="hidden" name="action" value="">
     <input type="hidden" name="user_id" value="<?php echo $this->current_user; ?>">
   <?php wp_nonce_field( $wpqt_nonce_action ); ?>
   </form><!-- /#wp-qiita-admin-form -->
-  
+
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
   <?php foreach ($tmpl_tabs as $_slug => $_label) : ?>
     <li role="presentation"<?php if ($tmpl_current_tab === $_slug) : ?> class="active"<?php endif; ?>><a href="#<?php echo $_slug; ?>" aria-controls="<?php echo $_slug; ?>" role="tab" data-toggle="tab"><?php echo $_label; ?></a></li>
   <?php endforeach; ?>
   </ul><!-- /.nav-tabs -->
-  
+
   <!-- Tab panes -->
   <div class="tab-content">
     <div class="loader"><?php _e('Now Loading...', $this->domain_name); ?></div>
     <div role="tabpanel" class="tab-pane<?php if ($tmpl_current_tab === 'activation') : ?> active<?php endif; ?><?php if ( ! array_key_exists( 'tab', $this->query ) ) : ?> loaded<?php endif; ?>" id="activation">
 <?php
-if ( 'activation' === $tmpl_current_tab ) : 
-  if ( ! $_is_activated) : 
+if ( 'activation' === $tmpl_current_tab ) :
+  if ( ! $_is_activated) :
 ?>
       <p class="describe">
         <?php _e('At the here is able to do Qiita and WordPress activation (cooperation). In the activation has two kinds of methods.', $this->domain_name); ?>
         <?php _e('One is how to issue an access token by registering the site as an application to Qiita side. Another way is to register the access token that was issued at Qiita side to this site side.', $this->domain_name); ?>
         <?php _e('Even in conjunction with either method, the difference in the use of plugin does not occur. Please choose your favorite way.', $this->domain_name); ?>
       </p>
-      
+
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="oauthActivateHeader">
@@ -71,7 +71,7 @@ if ( 'activation' === $tmpl_current_tab ) :
           </div><!-- /.panel-heading -->
           <div id="oauthActivate" class="panel-collapse collapse" role="tabpanel" aria-labelledby="oauthActivateHeader">
             <div class="panel-body">
-              
+
               <div class="row">
                 <div class="col-sm-6 col-md-6">
                   <div class="thumbnail">
@@ -92,14 +92,14 @@ if ( 'activation' === $tmpl_current_tab ) :
                   </div>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col-sm-12 col-md-12">
                   <div class="thumbnail">
                     <div class="caption">
                       <h5>3. <?php _e('Enter the issued Client ID and Client Secret.', $this->domain_name); ?></h5>
                     </div>
-                    
+
               <div class="form-horizontal">
                 <div class="form-group">
                   <label for="wpqt-client_id" class="col-sm-3 control-label"><?php _e('Client ID', $this->domain_name); ?></label>
@@ -141,7 +141,7 @@ if ( 'activation' === $tmpl_current_tab ) :
                   </div>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col-sm-6 col-md-6">
                   <div class="thumbnail">
@@ -162,7 +162,7 @@ if ( 'activation' === $tmpl_current_tab ) :
                   </div>
                 </div>
               </div>
-              
+
             </div><!-- /.panel-body -->
           </div><!-- /.panel-collapse -->
         </div><!-- /.panel -->
@@ -176,7 +176,7 @@ if ( 'activation' === $tmpl_current_tab ) :
           </div><!-- /.panel-heading -->
           <div id="tokenActivate" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tokenActivateHeader">
             <div class="panel-body">
-              
+
               <div class="row">
                 <div class="col-sm-6 col-md-6">
                   <div class="thumbnail">
@@ -197,14 +197,14 @@ if ( 'activation' === $tmpl_current_tab ) :
                   </div>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col-sm-12 col-md-12">
                   <div class="thumbnail">
                     <div class="caption">
                       <h5>3. <?php _e('Enter the issued access token.', $this->domain_name); ?></h5>
                     </div>
-                    
+
               <div class="form-horizontal">
                 <div class="form-group">
                   <label for="wpqt-access_token" class="col-sm-2 control-label"><?php _e('Access Token', $this->domain_name); ?></label>
@@ -222,23 +222,23 @@ if ( 'activation' === $tmpl_current_tab ) :
                   </div>
                 </div>
               </div>
-              
+
             </div><!-- /.panel-body -->
           </div><!-- /.panel-collapse -->
         </div><!-- /.panel -->
       </div><!-- /#accordion-->
-<?php else : 
+<?php else :
 
 // Set defaults
 extract( array(
-  '_load_jquery' => isset( $_qiita_user_meta['load_jquery'] ) ? wp_validate_boolean( $_qiita_user_meta['load_jquery'] ) : true, 
-  '_show_posttype' => isset( $_qiita_user_meta['show_posttype'] ) ? wp_validate_boolean( $_qiita_user_meta['show_posttype'] ) : false, 
-  '_autosync' => isset( $_qiita_user_meta['autosync'] ) ? wp_validate_boolean( $_qiita_user_meta['autosync'] ) : false, 
-  '_autosync_interval' => isset( $_qiita_user_meta['autosync_interval'] ) && intval( $_qiita_user_meta['autosync_interval'] ) > 0 ? intval( $_qiita_user_meta['autosync_interval'] ) : '', 
-  '_autosync_status' => __('Undefined', $this->domain_name), 
-  '_autopost' => isset( $_qiita_user_meta['autopost'] ) ? wp_validate_boolean( $_qiita_user_meta['autopost'] ) : false, 
-  '_remove_post' => isset( $_qiita_user_meta['remove_post'] ) ? wp_validate_boolean( $_qiita_user_meta['remove_post'] ) : false, 
-  '_deactivate_qiita' => isset( $_qiita_user_meta['deactivate_qiita'] ) ? wp_validate_boolean( $_qiita_user_meta['deactivate_qiita'] ) : false, 
+  '_load_jquery' => isset( $_qiita_user_meta['load_jquery'] ) ? wp_validate_boolean( $_qiita_user_meta['load_jquery'] ) : true,
+  '_show_posttype' => isset( $_qiita_user_meta['show_posttype'] ) ? wp_validate_boolean( $_qiita_user_meta['show_posttype'] ) : false,
+  '_autosync' => isset( $_qiita_user_meta['autosync'] ) ? wp_validate_boolean( $_qiita_user_meta['autosync'] ) : false,
+  '_autosync_interval' => isset( $_qiita_user_meta['autosync_interval'] ) && intval( $_qiita_user_meta['autosync_interval'] ) > 0 ? intval( $_qiita_user_meta['autosync_interval'] ) : '',
+  '_autosync_status' => __('Undefined', $this->domain_name),
+  '_autopost' => isset( $_qiita_user_meta['autopost'] ) ? wp_validate_boolean( $_qiita_user_meta['autopost'] ) : false,
+  '_remove_post' => isset( $_qiita_user_meta['remove_post'] ) ? wp_validate_boolean( $_qiita_user_meta['remove_post'] ) : false,
+  '_deactivate_qiita' => isset( $_qiita_user_meta['deactivate_qiita'] ) ? wp_validate_boolean( $_qiita_user_meta['deactivate_qiita'] ) : false,
 ) );
 foreach ( $this->options as $_key => $_val ) {
   $_{$_key} = $_val;
@@ -251,9 +251,9 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
 }
 ?>
       <h3 class="text-success"><?php _e('Currently, already Activated.', $this->domain_name); ?></h3>
-      
+
       <p class="describe"><?php _e('Do you want to inactivate and stop cooperation with Qiita?', $this->domain_name); ?></p>
-      
+
       <div class="form-horizontal">
         <input type="hidden" id="wpqt-inactivate_flag" name="<?php echo esc_attr($this->domain_name); ?>[inactivate_flag]" value="true">
         <div class="form-group">
@@ -262,13 +262,13 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
           </div>
         </div>
       </div>
-      
+
       <div class="clearfix"></div>
       <div class="activated-options">
         <h4 class="text-info"><span class="dashicons dashicons-admin-settings"></span> <?php _e('Advanced cooperation options', $this->domain_name); ?></h4>
-        
+
         <p class="describe"><?php _e('In this options, you can carry out the advanced settings about connection with the Qiita.', $this->domain_name); ?></p>
-        
+
         <div class="form-horizontal">
           <input type="hidden" id="wpqt-advanced_setting" name="<?php echo esc_attr($this->domain_name); ?>[advanced_setting]" value="true">
           <div class="form-group">
@@ -349,7 +349,7 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
               </div>
             </div>
           </div><!-- /.form-group:#wpqtDeactivate -->
-          
+
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <button type="button" class="btn btn-primary" data-button-action="advanced_setting"><?php _e('Save changes', $this->domain_name); ?></button>
@@ -357,7 +357,7 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
           </div><!-- /.form-group:#wpqtAutosync -->
         </div><!-- /.form-horizontal -->
       </div><!-- /.activated-options -->
-      
+
 <?php endif; ?>
   <div class="panel panel-default donate-info">
     <div class="panel-heading"><span class="glyphicon glyphicon-heart" style="color: #f33;"></span> <?php esc_html_e( 'About WP Qiita', $this->domain_name ); ?></div>
@@ -365,7 +365,7 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
       <?php _e( 'If you become to like this plugin or if it helps your business, donations to the author are greatly appreciated.', $this->domain_name ); ?></p>
       <div class="clearfix"></div>
       <ul class="list-inline donate-links">
-      <?php if (in_array($_local_code, [ 'ja',  ])) : ?>
+      <?php if (in_array($_local_code, array( 'ja',  ))): ?>
         <li class="donate-paypal"><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_donations">
           <input type="hidden" name="business" value="2YZY4HWYSWEWG">
@@ -397,7 +397,7 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
       </ul>
     </div><!-- /.panel-body -->
   </div><!-- /.panel -->
-  
+
   <div class="panel panel-default other-note">
     <div class="panel-heading"><i class="fa fa-check-circle-o"></i> <?php _e( 'WP Qiita License Agreement', $this->domain_name ); ?></div>
     <div class="panel-body">
@@ -412,7 +412,7 @@ if ( isset( $this->options['autosync_datetime'] ) && ! empty( $this->options['au
     <div role="tabpanel" class="tab-pane<?php if ($tmpl_current_tab === 'profile') : ?> active<?php endif; ?>" id="profile">
 <?php if ('profile' === $tmpl_current_tab) : ?>
       <h4 class="heading-tab"><?php _e('Authenticated Qiita user&#039;s profile', $this->domain_name); ?></h4>
-      
+
 <?php
 if ( ! array_key_exists( 'id', $_qiita_user_meta ) ) {
   $_qiita_user_meta = $this->retrieve_authenticated_user_profile( $this->current_user );
@@ -500,7 +500,7 @@ if ( isset( $_qiita_user_meta['contribution'] ) || ! empty( $_qiita_user_meta['c
           </div><!-- /.form-horizontal -->
         </div>
         <div class="col-xs-12 col-sm-8 col-md-8">
-      
+
       <div class="form-group">
         <label for="user_name"><?php _e('Name', $this->domain_name); ?></label>
         <div class="row">
@@ -583,7 +583,7 @@ if ( isset( $_qiita_user_meta['contribution'] ) || ! empty( $_qiita_user_meta['c
         </div>
       </div>
 */ ?>
-      
+
       </div><!-- /.row -->
       <div class="form-group">
         <div class="col-sm-offset-1 col-sm-11">
@@ -598,23 +598,23 @@ if ( isset( $_qiita_user_meta['contribution'] ) || ! empty( $_qiita_user_meta['c
     <div role="tabpanel" class="tab-pane<?php if ($tmpl_current_tab === 'items') : ?> active<?php endif; ?>" id="items">
 <?php if ('items' === $tmpl_current_tab) : ?>
       <h4 class="heading-tab"><?php _e('Articles management for authenticated Qiita user', $this->domain_name); ?></h4>
-      
+
 <?php
 $current_page = array_key_exists('cp', $this->query) && !empty($this->query['cp']) && intval($this->query['cp']) > 0 ? intval($this->query['cp']) : 1;
 $per_page = array_key_exists('pp', $this->query) && !empty($this->query['pp']) && intval($this->query['pp']) > 0 ? intval($this->query['pp']) : 20;
 $start_index = ($current_page - 1) * $per_page;
 $_items = get_posts( array( 'posts_per_page' => $per_page, 'offset' => $start_index, 'post_type' => $this->domain_name, 'author' => $this->current_user, 'post_status' => 'publish,private,draft' ) );
 $_indices = array(
-  'index' => '#', 
-  'title' => __('Title', $this->domain_name), 
-  'stocks' => __('Stocks', $this->domain_name), 
-  'excerpt' => __('Excerpt', $this->domain_name), 
-  'tags' => __('Tags', $this->domain_name), 
-  'coediting' => __('Co Editing', $this->domain_name), 
-  'private' => __('Private', $this->domain_name), 
-  'created' => __('Created at', $this->domain_name), 
-  'updated' => __('Updated at', $this->domain_name), 
-  'operate' => __('Operations', $this->domain_name), 
+  'index' => '#',
+  'title' => __('Title', $this->domain_name),
+  'stocks' => __('Stocks', $this->domain_name),
+  'excerpt' => __('Excerpt', $this->domain_name),
+  'tags' => __('Tags', $this->domain_name),
+  'coediting' => __('Co Editing', $this->domain_name),
+  'private' => __('Private', $this->domain_name),
+  'created' => __('Created at', $this->domain_name),
+  'updated' => __('Updated at', $this->domain_name),
+  'operate' => __('Operations', $this->domain_name),
 );
 if ($_qiita_user_meta['team_only']) {
   unset($_indices['excerpt'], $_indices['private']);
@@ -638,7 +638,7 @@ if ($_qiita_user_meta['team_only']) {
           <button class="btn btn-default" type="button" id="resync-all-items" data-button-action="resync_all"><span class="dashicons dashicons-update"></span> <?php _e('Resync All', $this->domain_name); ?></button>
         </div>
       </div>
-      
+
       <table class="table table-bordered table-striped table-hover" id="qiita-items">
         <thead>
           <tr>
@@ -686,7 +686,7 @@ if ($_qiita_user_meta['team_only']) {
           </tr>
         </tfoot>
       </table>
-      
+
       <div class="panel-footer form-inline">
 <?php
 $total_items = $_qiita_user_meta['items_count'];
@@ -716,19 +716,19 @@ $max_page = ceil($total_items / $per_page);
     <div role="tabpanel" class="tab-pane<?php if ($tmpl_current_tab === 'extra') : ?> active<?php endif; ?>" id="extra">
 <?php if ('extra' === $tmpl_current_tab) : ?>
       <h4 class="heading-tab"><?php _e('The below features will have been available in this plugin.', $this->domain_name); ?></h4>
-      
+
 <?php
 $icon_fonts = array(
-  'qiita-q' 					=> array( 'desc' => __('Q mark logo of Qiita', $this->domain_name), 'code' => '<span class="wpqt-qiita-q"></span>', 'content' => '\e900' ), 
-  'qiita-favicon' 			=> array( 'desc' => __('Logo of the favicon of Qiita', $this->domain_name), 'code' => '<span class="wpqt-qiita-favicon"></span>', 'content' => '\e901' ), 
-  'qiita-favicon-color' 		=> array( 'desc' => __('Logo of the favicon of Qiita (multiple color)', $this->domain_name), 'code' => '<span class="wpqt-qiita-favicon-color"><span class="path1"></span><span class="path2"></span></span>', 'content' => '\e902\e903' ), 
-  'qiita-favicon-reversal' 	=> array( 'desc' => __('Logo of the favicon of Qiita (reversal)', $this->domain_name), 'code' => '<span class="wpqt-qiita-favicon-reversal"></span>', 'content' => '\e904' ), 
-  'qiita-square' 			=> array( 'desc' => __('Logo of Qiita in the rounded square', $this->domain_name), 'code' => '<span class="wpqt-qiita-square"></span>', 'content' => '\e905' ), 
+  'qiita-q' 					=> array( 'desc' => __('Q mark logo of Qiita', $this->domain_name), 'code' => '<span class="wpqt-qiita-q"></span>', 'content' => '\e900' ),
+  'qiita-favicon' 			=> array( 'desc' => __('Logo of the favicon of Qiita', $this->domain_name), 'code' => '<span class="wpqt-qiita-favicon"></span>', 'content' => '\e901' ),
+  'qiita-favicon-color' 		=> array( 'desc' => __('Logo of the favicon of Qiita (multiple color)', $this->domain_name), 'code' => '<span class="wpqt-qiita-favicon-color"><span class="path1"></span><span class="path2"></span></span>', 'content' => '\e902\e903' ),
+  'qiita-favicon-reversal' 	=> array( 'desc' => __('Logo of the favicon of Qiita (reversal)', $this->domain_name), 'code' => '<span class="wpqt-qiita-favicon-reversal"></span>', 'content' => '\e904' ),
+  'qiita-square' 			=> array( 'desc' => __('Logo of Qiita in the rounded square', $this->domain_name), 'code' => '<span class="wpqt-qiita-square"></span>', 'content' => '\e905' ),
 );
 $shortcode_examples = array(
-  'wpqt-icon' 				=> '<code>[wpqt-icon name="qiita-favicon"]</code>,<wbr><code>[wpqt-icon id="3"]</code>', 
-  'wpqt-permalink' 	=> '<code>[wpqt-permalink pid="911" target="_blank"]Link to Qiita[/wpqt-permalink]</code>,<wbr><code>[wpqt-permalink iid="f9834dca40bb3d7e9c8b" html="false"]</code>', 
-  'wpqt-post-stocks' 	=> '<code>[wpqt-post-stocks pid="911"]</code>,<wbr><code>[wpqt-post-stocks iid="f9834dca40bb3d7e9c8b"]</code>', 
+  'wpqt-icon' 				=> '<code>[wpqt-icon name="qiita-favicon"]</code>,<wbr><code>[wpqt-icon id="3"]</code>',
+  'wpqt-permalink' 	=> '<code>[wpqt-permalink pid="911" target="_blank"]Link to Qiita[/wpqt-permalink]</code>,<wbr><code>[wpqt-permalink iid="f9834dca40bb3d7e9c8b" html="false"]</code>',
+  'wpqt-post-stocks' 	=> '<code>[wpqt-post-stocks pid="911"]</code>,<wbr><code>[wpqt-post-stocks iid="f9834dca40bb3d7e9c8b"]</code>',
 );
 ?>
       <div class="panel panel-default">
@@ -759,7 +759,7 @@ $shortcode_examples = array(
           </tbody>
         </table>
       </div>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h5><?php _e('Various Shortcodes', $this->domain_name); ?></h5>
@@ -778,7 +778,7 @@ $shortcode_examples = array(
           </table>
         </div>
       </div>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h5><?php _e('Various Widgets', $this->domain_name); ?></h5>
@@ -797,9 +797,9 @@ $shortcode_examples = array(
           </ul>
         </div>
       </div>
-      
+
 <?php endif; ?>
     </div><!-- /.tab-pane#comments -->
   </div><!-- /.tab-content -->
-  
+
 </div><!-- /#wp-qiita-options -->
